@@ -51,7 +51,12 @@ export default function StudentPage() {
     setCurrentBlock(Math.ceil(CurrentPage / pageCount));
     const blockAll = Math.ceil(pageAll / pageCount);
     const firstPage = (CurrentBlock - 1) * pageCount + 1;
-    const lastPage = firstPage + pageCount - 1;
+    let lastPage = 0;
+    if (CurrentBlock !== blockAll) {
+      lastPage = firstPage + pageCount - 1;
+    } else {
+      lastPage = firstPage;
+    }
 
     setCurrentContent(Contents.slice(firstContent - 1, lastContent));
 
@@ -59,8 +64,8 @@ export default function StudentPage() {
     for (let i = firstPage; i <= lastPage; i++) {
       pages_temp.push(i);
     }
+    console.log(pages_temp);
     setPages(pages_temp);
-
     if (CurrentBlock === blockAll) {
       setPrev(true);
       setNext(false);
@@ -75,18 +80,20 @@ export default function StudentPage() {
     // console.log(Contents.slice(firstContent - 1, lastContent));
     // console.log("contentsCount", contentsCount);
     // console.log("pageCount", pageCount);
-    console.log("pageAll", pageAll);
+    //console.log("pageAll", pageAll);
     console.log("firstPage", firstPage);
     console.log("lastPage", lastPage);
-    console.log("CurrentPage", CurrentPage);
-    // console.log("firstContent", firstContent);
-    // console.log("lastContent", lastContent);
-    console.log("blockAll", blockAll);
+    //console.log("CurrentPage", CurrentPage);
+    console.log("firstContent", firstContent);
+    console.log("lastContent", lastContent);
+    //console.log("blockAll", blockAll);
     console.log("CurrentBlock", CurrentBlock);
   };
 
   useEffect(() => {
+    console.log("Pages before", Pages);
     paging(CurrentPage);
+    console.log("Pages after", Pages);
   }, [CurrentPage, CurrentBlock]);
 
   const onCollapsed = (Collapsed) => {
@@ -138,7 +145,7 @@ export default function StudentPage() {
               </>
             );
           })}
-          <a onClick={onPrevClicked}>prev</a>
+          {Prev ? <a onClick={onPrevClicked}>prev</a> : <a></a>}
           {Pages.map((page, i) => {
             return (
               <a key={i} id={page} onClick={onPageClicked}>
@@ -146,7 +153,7 @@ export default function StudentPage() {
               </a>
             );
           })}
-          <a onClick={onNextClicked}>next</a>
+          {Next ? <a onClick={onNextClicked}>next</a> : <a></a>}
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©2018 Created by Ant UED
