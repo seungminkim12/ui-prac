@@ -24,8 +24,10 @@ export default function SideMenu() {
         <Menu.Item key="4">수업</Menu.Item>
         <Menu.Item key="5">성적</Menu.Item>
       </SubMenu>
-      <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-        <Menu.Item key="6">Team 1</Menu.Item>
+      <SubMenu key="sub2" icon={<TeamOutlined />} title="공지사항">
+        <Menu.Item key="6">
+          <a href="/noty">공지</a>
+        </Menu.Item>
         <Menu.Item key="8">Team 2</Menu.Item>
       </SubMenu>
       <Menu.Item key="9" icon={<FileOutlined />}>
