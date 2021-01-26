@@ -1,4 +1,6 @@
 import { Breadcrumb, Calendar } from "antd";
+import React, { useEffect } from "react";
+import ContentTitle from "./ContentTitle";
 
 export default function ContentArea() {
   const onPanelChange = (value, mode) => {
@@ -7,11 +9,7 @@ export default function ContentArea() {
 
   return (
     <>
-      <Breadcrumb style={{ margin: "16px 0" }}>
-        <Breadcrumb.Item>학생정보시스템</Breadcrumb.Item>
-        <Breadcrumb.Item>증명서발급</Breadcrumb.Item>
-      </Breadcrumb>
-
+      <ContentTitle />
       <div className="site-calendar-demo-card">
         <Calendar fullscreen={false} onPanelChange={onPanelChange} />
       </div>

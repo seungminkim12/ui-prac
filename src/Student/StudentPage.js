@@ -1,4 +1,4 @@
-import { Layout } from "antd";
+import { Layout, Pagination } from "antd";
 
 import "./StudentPage.css";
 
@@ -7,6 +7,7 @@ import HeaderArea from "../HeaderArea";
 import ContentArea from "../ContentArea";
 
 import React, { useState, useEffect } from "react";
+import ContentTitle from "../ContentTitle";
 
 const { Content, Footer, Sider } = Layout;
 
@@ -137,6 +138,7 @@ export default function StudentPage() {
       <Layout className="site-layout">
         <HeaderArea />
         <Content style={{ margin: "0 16px" }}>
+          <ContentTitle />
           {CurrentContent.map((content, i) => {
             return (
               <>
